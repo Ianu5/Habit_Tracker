@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    my_habits
+{% endblock %}
+
+{% block main %}
+
+<form action="/register" method="post">
+    <div class="mb-2">
+        <label for="username" class="form-label"><h3>Register</h3></label>
+        <input autocomplete="off" autofocus class="form-control w-auto mx-auto" id="username" name="username" placeholder="Username" type="text">
+    </div>
+    <p id="error_username">{{ error_username }}</p>
+    <div class="mb-2">
+        <input class="form-control w-auto mx-auto" id="password" name="password" placeholder="Password" type="password">
+    </div>
+    <div class="mb-2">
+        <input class="form-control w-auto mx-auto" id="confirmation" name="confirmation" placeholder="Repeat Password" type="password">
+    </div>
+    <p id="error_password">{{ error_password }}</p>
+    <button class="btn btn-dark" type="submit">Sign Up</button>
+</form>
+
+
+{% endblock %}

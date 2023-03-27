@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    index
+{% endblock %}
+
+{% block main %}
+<div class="container text-center">
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <form action="/add_habit" method="post">
+                <div class="mb-2">
+                    <input autocomplete="off" autofocus class="form-control w-auto mx-auto" id="habit" name="habit" placeholder="Type your new habit here" type="text">
+                </div>
+                <div class="col">
+                    <button class="btn btn-success mb-2" type="submit">Add</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-4">
+            <form action="/delete_habit" method="post">
+                <div class="mb-2">
+                    <select class="form-select" aria-label="Default select example" name="habit">
+                        {% for habit in habits %}
+                            <option value="{{ habit }}" id="habit" name="habit" SELECTED>{{ habit }}</option>
+                        {% endfor %}
+                        <option selected>Choose the Habit to delete</option>
+                    </select>
+                </div> 
+                <button class="btn btn-secondary mb-2" type="submit">Delete</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <form action="/update_habit" method="post">
+            <table class="table table-dark table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Habits</th>
+                        <th scope="col">Check if done</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for habit in habits %}
+                    <tr>
+                        <th scope="row">{{ loop.index }}</th>
+                        <td>{{ habit }}</td>
+                        <td><input class="form-check-input" value="" type="checkbox" name="{{ habit }}"></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <button class="btn btn-primary mb-2" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <form action="habit_history" method="post">
+            <div class="input-group">
+                <span class="input-group-text">Show the history of Habit in Year</span>
+                    <select class="form-select" class="form-control" name="habit">
+                        {% for habit in habits %}
+                            <option value="{{ habit }}" id="habit" name="habit" SELECTED>{{ habit }}</option>
+                        {% endfor %}
+                    </select>
+                <input class="form-control" type="number" id="year" name="year" min="1980" max="2050">
+            </div>
+            <div class="p-2">
+                <button class="btn btn-primary mb-2" type="submit">Show History</button>
+            </div>    
+        </form>
+    </div>
+</div>
+
+{% endblock %}

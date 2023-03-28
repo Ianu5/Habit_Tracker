@@ -23,9 +23,8 @@ def index():
         db.execute("SELECT * FROM habits WHERE user_id = ?", (session["user_id"],))
         row = db.fetchall()
         habits = [x[2] for x in row]
-        length = (len(habits))
         conn.close()
-        return render_template("/index.html", habits=habits, len=length)
+        return render_template("/index.html", habits=habits)
 
 @app.route("/add_habit", methods=["GET", "POST"])
 @login_required

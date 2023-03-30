@@ -1,5 +1,5 @@
 # Habit Tracker
-#### Video Demo:  <URL HERE>
+#### Video Demo:  <https://youtu.be/ZOGDk0vOFkw>
 #### Description:
 This is my final project for the CS50 course by the Harvard University.
 My project is web application using Flask and MySQL.
